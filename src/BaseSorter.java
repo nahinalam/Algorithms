@@ -8,10 +8,10 @@ public abstract class BaseSorter {
     protected BaseSorter() {
     }
 
-    protected static void swap(int[] array, int i, int j) {
-        final int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+    protected static void swap(int i, int j) {
+        final int temp = i;
+        i = j;
+        j = temp;
     }
 
     /*
@@ -31,6 +31,20 @@ public abstract class BaseSorter {
             }
             array[j + 1] = x;
 
+        }
+    }
+
+    protected void selectionSort(int[] array) {
+        for (int i = 0; i < array.length - 1; ++i) {
+            int j_min = i;
+            for (int j = 0; j < array.length; ++j) {
+                if (array[j] < array[j_min]) {
+                    j_min = j;
+                }
+            }
+            if (j_min != i) {
+                swap(array[i], array[j_min]);
+            }
         }
     }
 
